@@ -1,0 +1,26 @@
+---
+
+# jenkins variables
+project_name: docker-openvpn
+external_type: na
+custom_version_command: "curl -sX GET http://build.openvpn.net/debian/openvpn/stable/dists/bionic/main/binary-amd64/Packages.gz | gunzip -c |grep -A 7 -m 1 'Package: openvpn' | awk -F ': ' '/Version/{print $2;exit}'"
+release_type: stable
+release_tag: latest
+ls_branch: master
+repo_vars:
+  - BUILD_VERSION_ARG = 'OPENVPN_VERSION'
+  - LS_USER = 'linuxserver'
+  - LS_REPO = 'docker-openvpn'
+  - CONTAINER_NAME = 'openvpn'
+  - DOCKERHUB_IMAGE = 'b14ckp4nd/opvn'
+  - DEV_DOCKERHUB_IMAGE = 'b14ckp4nd/opvn'
+  - PR_DOCKERHUB_IMAGE = 'b14ckp4nd/opvn'
+  - DIST_IMAGE = 'ubuntu'
+  - MULTIARCH='false'
+  - CI='true'
+  - CI_PORT='943'
+  - CI_SSL='true'
+  - CI_DELAY='120'
+  - CI_DOCKERENV='TZ=DE/Berlin'
+  - CI_PORT='1194'
+  - CI_PROTO='udp'

@@ -1,0 +1,55 @@
+FROM lsiobase/ubuntu:bionic
+
+# set version label
+ARG BUILD_DATE
+ARG VERSION
+ARG OPENVPNAS_VERSION
+LABEL build_version="BlackPanda version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="aptalca"
+
+# environment settings
+ARG DEBIAN_FRONTEND="noninteractive"
+
+ENV DEBIAN_FRONTEND noninteractive
+
+#openvpn
+ENV port=443
+ENV proto=tcp
+ENV configPath=/config
+
+RUN \
+ echo "**** install dependencies ****" && \
+ apt-get update && \
+ apt-get install -y \
+	bridge-utils \
+	gnupg \
+	iproute2 \
+	iptables \
+	liblzo2-2 \
+	libmariadbclient18 \
+	libmysqlclient-dev \
+	net-tools \
+	python \
+	python-dev \
+	python-pip \
+	libgmp-dev \
+	build-essential \
+	python-mysqldb \
+	python-pkg-resources \
+	python-pyrad \
+	python-serial \
+	rsync \
+	wget \
+	sqlite3 \
+	git \
+	ucarp && \
+ echo "**** add openvpn repo ****" && \
+
+ echo "**** ensure home folder for abc user set to /config ****" && \
+ usermod -d /config abc
+
+# add local files
+COPY /root /
+
+#volumes
+VOLUME /config
