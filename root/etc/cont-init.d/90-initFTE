@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+#localIP=$(awk 'END{print $1}' /etc/hosts)
+
+fteproxy --mode $MODE --server_ip $SERVER_IP --server_port $SERVER_PORT --proxy_ip $PROXY_IP --proxy_port $PROXY_PORT --key $TRANSFER_KEY
+#fteproxy --server_ip $localIP --server_port $SERVER_PORT --proxy_ip $PROXY_IP --proxy_port $PROXY_PORT
+#/usr/sbin/fteproxy --server_ip $SERVER_IP --server_port $SERVER_PORT --proxy_ip $PROXY_IP --proxy_port $PROXY_PORT

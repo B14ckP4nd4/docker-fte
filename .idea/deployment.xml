@@ -5,7 +5,7 @@
       <paths name="FTE">
         <serverdata>
           <mappings>
-            <mapping deploy="/root/fte" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/root/docker-fte" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
